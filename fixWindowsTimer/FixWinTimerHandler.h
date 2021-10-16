@@ -37,7 +37,7 @@ public:
 			pSetTimerResolution setFunction{};
 			setFunction = (pSetTimerResolution)GetProcAddress(hLibrary, "NtSetTimerResolution");
 			ULONG res{};
-			setFunction(5000, TRUE, &res);
+			setFunction(10000, TRUE, &res);
 
 			
 		}
