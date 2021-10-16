@@ -1,5 +1,5 @@
 # FixWindowsTimerResolution
-Sets the windows timer resolution to 0.5 ms, down from the default 15,6ms.
+Sets the windows timer resolution to 1 ms, down from the default 15,6ms.
 Makes the system overall more responsive and prevents stuttering ( Especially suspectible to stuttering are games ).
 
 Only one instance of this program can run at a time.
