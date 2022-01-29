@@ -1,5 +1,4 @@
-// WindowsProject1.cpp : Defines the entry point for the application.
-//
+
 #pragma once
 #include <Windows.h>
 #include <limits.h>
@@ -63,7 +62,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
+BOOL stopINITIfRunning() {
+    // stops init of a new app if it's already running
+    mutex = CreateMutexA(NULL, TRUE, "FixWindowsTimer");
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+    {
+        exit(-1);
 
+    }
+}
 
 //
 //  FUNCTION: MyRegisterClass()
@@ -103,13 +110,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-    mutex = CreateMutexA(NULL, TRUE, "FixWindowsTimer");
-    if (GetLastError() == ERROR_ALREADY_EXISTS)
-    {
-        exit(-1);
-        return -1;
-    }
-
+   stopINITIfRunning();
    hInst = hInstance; // Store instance handle in our global variable
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
@@ -195,5 +196,8 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+
+
+
 
 

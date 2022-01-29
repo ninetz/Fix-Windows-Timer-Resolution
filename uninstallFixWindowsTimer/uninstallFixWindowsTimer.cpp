@@ -1,10 +1,8 @@
-// uninstallFixWindowsTimer.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <Windows.h>
-int main()
-{
+void deleteKeyIfExists() {
+	// Checks if appropriate registry key exists, if it exists it is deleted.
 	HKEY hkExists;
 	long lKeyOpen = RegOpenKeyEx(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_READ, &hkExists);
 	LONG lKeyExists = RegQueryValueExA(hkExists, "FixWindowsTimer", NULL, NULL, NULL, NULL);
@@ -15,15 +13,9 @@ int main()
 		RegDeleteValue(hk, L"FixWindowsTimer");
 		RegCloseKey(hk);
 	}
+} 
+int main()
+{
+	deleteKeyIfExists();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
