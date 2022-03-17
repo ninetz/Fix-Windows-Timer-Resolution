@@ -9,3 +9,6 @@ FixWindowsTimer.exe -> Adds the program path to startup and keeps the timer reso
 uninstallFixWindowsTimer.exe -> Removes program from startup.
 
 
+<h2>What you need to build:</h2>
+
+Visual studio
