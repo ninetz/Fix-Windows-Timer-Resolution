@@ -11,4 +11,4 @@ uninstallFixWindowsTimer.exe -> Removes program from startup.
 
 <h2>What you need to build:</h2>
 
-Visual studio
+Import project into Visual studio
